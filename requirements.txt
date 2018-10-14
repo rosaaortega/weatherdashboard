@@ -1,0 +1,11 @@
+[[source]]
+url = "https://github.com/rosaaortega/weatherdashboard"
+verify_ssl = true
+
+[packages]
+flask = "*"
+requests = "*"
+json = "*"
+
+[requires]
+python_version = "3.4"
