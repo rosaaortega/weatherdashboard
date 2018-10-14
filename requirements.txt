@@ -1,3 +1,4 @@
 Flask==1.0.2
 Jinja2==2.6
 Requests==2.19.1
+simplejson==2.0.9
