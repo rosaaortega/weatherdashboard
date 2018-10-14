@@ -24,8 +24,8 @@
                         <div class="form-group">
 						    <label for="scale">Scale</label>
 						    <select class="form-control" id="scale" onchange="updateCityScale()">
-						      <option value="M">Celsius</option>
-						      <option value="I">Fahrenheit</option>
+						      <option value="M" {% if scale=="M" %}selected{% endif %}>Celsius</option>
+						      <option value="I" {% if scale=="I" %}selected{% endif %}>Fahrenheit</option>
 						    </select>
 						 </div>
                     </div>
