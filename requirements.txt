@@ -1,5 +1,5 @@
 [[source]]
-url = "https://github.com/rosaaortega/weatherdashboard"
+url = "https://pypi.python.org/simple"
 verify_ssl = true
 
 [packages]
