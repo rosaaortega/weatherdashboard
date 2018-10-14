@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Weather Dashboard</h1>
+    <div class="container">
+        <div class="row" >
+            <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12" >
+                <div id="graph"></div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12" >
+                <div class="row">
+                    <div class="col-md-12 col-sm-4 col-xs-12" >
+                        <div class="form-group">
+						    <label for="city">City</label>
+						    <select class="form-control" id="city" onchange="updateCityScale()">
+						      <option value="Obregon" {% if city=="Obregon" %}selected{% endif %}>Cd. Obregon</option>
+						      <option value="Navojoa" {% if city=="Navojoa" %}selected{% endif %}>Navojoa</option>
+						      <option value="Hermosillo" {% if city=="Hermosillo" %}selected{% endif %}>Hermosillo</option>
+						      <option value="Nogales" {% if city=="Nogales" %}selected{% endif %}>Nogales</option>
+						    </select>
+						 </div>
+                    </div>
+                    <div class="col-md-12 col-sm-4 col-xs-12" >
+                        <div class="form-group">
+						    <label for="scale">Scale</label>
+						    <select class="form-control" id="scale" onchange="updateCityScale()">
+						      <option value="M">Celsius</option>
+						      <option value="I">Fahrenheit</option>
+						    </select>
+						 </div>
+                    </div>
+                    <div class="col-md-12 col-sm-4 col-xs-12" >
+                        <div id="calendar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+        	<div class="col-lg-12 col-md-8 col-sm-12 col-xs-12" >
+                <div id="table"></div>
+            </div>
+        </div>
+    </div>
+
+<script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+<script>
+    // 
+    nv.addGraph(display_linechart('#graph', data_format()));
+    
+    function data_format(){
+        weather = []
+        {% for d in data %}
+            weather.push({x:new Date("{{d.x}}"),y:{{d.y}} })
+        {% endfor %}
+
+
+        return [
+            {
+                area: false,
+                values: weather,
+                key: "Weather",
+                color: "#3c2c6d",
+            }
+        ];
+    }
+
+    function updateCityScale() {
+	    var city = document.getElementById("city").value
+	    var scale = document.getElementById("scale").value
+	    window.location.replace("/"+city+"/"+scale);
+	}
+
+
+
+
+
+
+</script>
+{% endblock %}
