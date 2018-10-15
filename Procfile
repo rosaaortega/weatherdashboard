@@ -1,1 +1,1 @@
-web: gunicorn rosaaortega-weatherdashboard:app
+web: gunicorn app:app
