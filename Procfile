@@ -1,1 +1,1 @@
-web: flask translate compile; flask run
+web: gunicorn rosaaortega-weatherdashboard:app
